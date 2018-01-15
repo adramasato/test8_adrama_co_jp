@@ -45,8 +45,9 @@
 			let rightNum=utils.clipLimit(num+1,listSrcQt);
 			let right2Num=utils.clipLimit(num+2,listSrcQt);
 			let nums=[left2Num,leftNum,currentNum,rightNum,right2Num];
+			console.log(nums)
 			for(let n=0;n<nums.length;n++){
-				let target=$(".inner_clip",listSrc).eq(nums[n]);
+				let target=$(".inner_clip",listSrc).eq(nums[n]).clone();
 				moveBlockLists[n].append(target);
 			}
 		}
