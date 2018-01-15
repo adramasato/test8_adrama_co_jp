@@ -1,0 +1,12 @@
+Options +Includes
+AddHandler server-parsed html
+
+AuthUserFile /webtest/.htpasswd
+AuthGroupFile /dev/null
+AuthName "Please enter your ID and password"
+AuthType Basic
+require valid-user
+
+<Files ~ "^.(htpasswd|htaccess)$">
+    deny from all
+</Files>
