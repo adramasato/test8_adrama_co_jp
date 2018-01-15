@@ -4,11 +4,15 @@ h1{
 	font-size: 12px;
 }
 
-.holizon_scroll{
-	width:100%;
 
+
+.holizon_scroll{
+	
+	width:100%;
+	
 	.holizon_scroll ul{
 		display:none;
+	
 	}
 
 	.holizon_scroll_move{
@@ -18,6 +22,7 @@ h1{
 	.holizon_scroll_move>div{
 		float:left;
 	}
+
 }
 
 

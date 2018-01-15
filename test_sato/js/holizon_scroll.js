@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 (function(){
 	$(function(){
@@ -8,7 +8,7 @@
 		let showQt=3;
 		let clipBlock=$("<div class='holizon_scroll_clip'>");
 		let moveBlock=$("<div class='holizon_scroll_move'>");
-		let currentNum,nextNum；
+		let currentNum,nextNum;
 		let moveDir;
 		let moveBlockLists=[];
 		//PC用
