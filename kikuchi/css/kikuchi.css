@@ -9,3 +9,6 @@ div { color: pink; }
 
 /* line 11, ../scss/kikuchi.scss */
 a { text-decoration: underline; }
+
+/* line 14, ../scss/kikuchi.scss */
+li { display: block; }
