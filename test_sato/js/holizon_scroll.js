@@ -2,19 +2,19 @@
 
 (function(){
 	$(function(){
-		var scrollBlock=$(".holizon_scroll");
-		var listSrc=$('li',scrollBlock);
-		var listSrcQt=listSrc.length;
-		var showQt=3;
-		var clipBlock=$("<div class='holizon_scroll_clip'>");
-		var moveBlock=$("<div class='holizon_scroll_move'>");
-		var currentNum,nextNum,
-		var moveDir;
-		var moveBlockLists=[];
+		let scrollBlock=$(".holizon_scroll");
+		let listSrc=$('li',scrollBlock);
+		let listSrcQt=listSrc.length;
+		let showQt=3;
+		let clipBlock=$("<div class='holizon_scroll_clip'>");
+		let moveBlock=$("<div class='holizon_scroll_move'>");
+		let currentNum,nextNum；
+		let moveDir;
+		let moveBlockLists=[];
 		//PC用
-		for(var n=0;n<showQt+2;n++){
-			var list=$('<div>');
-			var className;
+		for(let n=0;n<showQt+2;n++){
+			let list=$('<div>');
+			let className;
 			switch(n){
 				case 0:	className="left2";break;
 				case 1:	className="left";break;
