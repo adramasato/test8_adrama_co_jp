@@ -4,3 +4,9 @@ h1 {
 
 .holizon_scroll {
   width: 100%; }
+  .holizon_scroll .holizon_scroll ul {
+    display: none; }
+  .holizon_scroll .holizon_scroll_move {
+    position: relative; }
+  .holizon_scroll .holizon_scroll_move > div {
+    float: left; }

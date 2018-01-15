@@ -564,6 +564,15 @@ var utils={
 		return overRGB;
 		
 	},
+	
+	clipLimit:function(num,max){
+		if(num>=max){
+			num=num-max;
+		}else if(num<0){
+			num=max+num;
+		}
+		return num;
+	},
 		
 	clipNormalize:function(num){
 		if(num>1){num=1;}
