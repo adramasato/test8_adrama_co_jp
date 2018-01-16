@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="10mm" height="16mm" viewBox="0 0 28.35 45.35">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke: #fff;
+      }
+
+      .cls-2, .cls-3 {
+        stroke-miterlimit: 10;
+        stroke-width: 0.64px;
+      }
+
+      .cls-3 {
+        stroke: #231815;
+      }
+    </style>
+  </defs>
+  <title>go_left</title>
+  <g id="レイヤー_2" data-name="レイヤー 2">
+    <rect class="cls-1" width="28.35" height="45.35"/>
+  </g>
+  <g id="レイヤー_1のコピー" data-name="レイヤー 1のコピー">
+    <polyline class="cls-2" points="25.45 0.64 3.5 22.58 25.45 44.53"/>
+    <polyline class="cls-3" points="24.85 0.64 2.9 22.58 24.85 44.53"/>
+  </g>
+</svg>

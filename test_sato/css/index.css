@@ -1,34 +1,38 @@
-/* line 2, ../scss/index.scss */
 h1 {
   color: red;
   font-size: 12px;
 }
 
-/* line 9, ../scss/index.scss */
 .holizon_scroll {
   width: 100%;
   border: solid gray 1px;
 }
-/* line 14, ../scss/index.scss */
 .holizon_scroll ul {
   display: none;
 }
-/* line 19, ../scss/index.scss */
 .holizon_scroll .holizon_scroll_move {
   position: relative;
   width: 250vw;
+  zoom: 1;
+  left: 50%;
+  margin-left: -125vw;
 }
-/* line 25, ../scss/index.scss */
+.holizon_scroll .holizon_scroll_move:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+  font-size: 0;
+}
 .holizon_scroll .holizon_scroll_move > div {
   float: left;
   width: 50vw;
-  padding: 2vw;
+  padding: 2vw 1vw;
 }
-/* line 30, ../scss/index.scss */
 .holizon_scroll .holizon_scroll_move > div .inner_clip {
   overflow: hidden;
 }
-/* line 33, ../scss/index.scss */
 .holizon_scroll .holizon_scroll_move > div .inner_clip .inner {
   margin-left: -2vw;
   margin-top: -2vw;

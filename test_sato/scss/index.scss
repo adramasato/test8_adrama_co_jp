@@ -10,7 +10,7 @@ h1{
 	
 	width:100%;
 	border:solid gray 1px;
-	zoom: 1;
+	
 	
 	ul{
 		display:none;
@@ -20,6 +20,9 @@ h1{
 	.holizon_scroll_move{
 		position:relative;
 		width: 250vw;
+		zoom: 1;
+		left: 50%;
+		margin-left: -125vw;
 	}
 	.holizon_scroll_move:after{
 		content: ".";
@@ -34,7 +37,7 @@ h1{
 	.holizon_scroll_move>div{
 		float:left;
 		width:50vw;
-		padding: $padding;
+		padding: $padding $padding/2;
 		
 		.inner_clip{
 			overflow: hidden;
