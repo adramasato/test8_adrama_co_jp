@@ -5,3 +5,24 @@ h1{
 }
 
 
+
+.holizon_scroll{
+	
+	width:100%;
+	
+	ul{
+		display:none;
+	
+	}
+
+	.holizon_scroll_move{
+		position:relative;
+	}
+	
+	.holizon_scroll_move>div{
+		float:left;
+	}
+
+}
+
+
