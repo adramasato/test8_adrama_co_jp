@@ -1,14 +1,25 @@
-/* line 2, ../scss/kikuchi.scss */
-html { line-height: 1; }
+html {
+  line-height: 1;
+}
 
-/* line 5, ../scss/kikuchi.scss */
-body { width: 100%; }
+body {
+  width: 100%;
+}
 
-/* line 8, ../scss/kikuchi.scss */
-div { color: pink; }
+div {
+  color: #FF3399;
+}
 
-/* line 11, ../scss/kikuchi.scss */
-a { text-decoration: underline; }
+a {
+  text-decoration: underline;
+}
+a .bold {
+  font-weight: bold;
+}
 
-/* line 14, ../scss/kikuchi.scss */
-li { display: block; }
+li {
+  display: block;
+  font-family: family;
+  font-size: 1.5em;
+  font-color: blue;
+}

@@ -1,4 +1,8 @@
 @charset "UTF-8";
+
+$red:#FF3399;
+
+
 html {
 	line-height: 1;
 }
@@ -6,11 +10,20 @@ body{
 	width: 100%;
 }
 div{
-	color: pink;
+	color: $red;
 }
 a{
 	text-decoration: underline;
+	
+	& .bold {
+		font-weight: bold;
+	}
 }
 li{
 	display: block;
+	font: {
+		family: family;
+		size: 1.5em;
+		color: blue;
+	  }
 }
