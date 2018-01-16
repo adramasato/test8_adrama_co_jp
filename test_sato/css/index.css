@@ -37,5 +37,19 @@ h1 {
   margin-left: -2vw;
   margin-top: -2vw;
 }
+.holizon_scroll .arrow {
+  width: 38px;
+  height: 60px;
+  position: absolute;
+}
+.holizon_scroll .arrow .left,
+.holizon_scroll .arrow .right {
+  position: absolute;
+  display: none;
+}
+.holizon_scroll .arrow .left.show,
+.holizon_scroll .arrow .right.show {
+  display: block;
+}
 
 /*# sourceMappingURL=index.css.map */
