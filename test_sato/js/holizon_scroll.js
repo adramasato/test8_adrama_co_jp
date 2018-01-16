@@ -1,18 +1,24 @@
-'use strict';
+"use strict";
 
-(function(){
-	$(function(){
-		let scrollBlock=$(".holizon_scroll");
-		let listSrc=$('li',scrollBlock);
-		let listSrcQt=listSrc.length;
-		let showQt=3;
-		let clipBlock=$("<div class='holizon_scroll_clip'>");
-		let moveBlock=$("<div class='holizon_scroll_move'>");
-		let currentNum,nextNum;
-		let moveDir;
-		let moveBlockLists=[];
+class ScrollHolizen{
+	constructor(obj){
+		this.scrollBlock=obj;
+		this.moveBlockLists=[];
+		this.moveDir;
+		this.currentNum=0;
+		this.nextNum;
+		this.showQt=3;
+		this.init();
+		
+	}
+	
+	init(){
+		this.listSrc=$('li',this.scrollBlock);
+		this.listSrcQt=this.listSrc.length;
+		this.clipBlock=$("<div class='holizon_scroll_clip'>");
+		this.moveBlock=$("<div class='holizon_scroll_move'>");
 		//PC用
-		for(let n=0;n<showQt+2;n++){
+		for(let n=0;n<this.showQt+2;n++){
 			let list=$('<div>');
 			let className;
 			switch(n){
@@ -23,34 +29,39 @@
 				case 4:	className="right2";break;
 			}
 			list.addClass(className);
-			moveBlockLists.push(list);
-			moveBlock.append(list);
+			//console.log("list,"+n)
+			//console.log(list)
+			this.moveBlockLists.push(list);
+			this.moveBlock.append(list);
 		}
-		clipBlock.append(moveBlock);
-		scrollBlock.append(clipBlock);
+		this.clipBlock.append(this.moveBlock);
+		this.scrollBlock.append(this.clipBlock);
 		
-		currentNum=0;
 		//初期化
-		setCurrent(currentNum);
+		this.setCurrent(this.currentNum);
 		
-		
-		function moveCurrent(nextNum){
-			
-		}
-		
-		function setCurrent(num){
-			let left2Num=utils.clipLimit(num-2,listSrcQt);
-			let leftNum=utils.clipLimit(num-1,listSrcQt);
-			let currentNum=utils.clipLimit(num,listSrcQt);
-			let rightNum=utils.clipLimit(num+1,listSrcQt);
-			let right2Num=utils.clipLimit(num+2,listSrcQt);
-			let nums=[left2Num,leftNum,currentNum,rightNum,right2Num];
-			console.log(nums)
-			for(let n=0;n<nums.length;n++){
-				let target=$(".inner_clip",listSrc).eq(nums[n]).clone();
-				moveBlockLists[n].append(target);
-			}
-		}
-	})
+	}
+	moveDrug(drugDistance){
+		console.log(drugDistance);
+	}
 	
-})();
+	setCurrent(num){
+		let left2Num=utils.clipLimit(num-2,this.listSrcQt);
+		let leftNum=utils.clipLimit(num-1,this.listSrcQt);
+		let currentNum=utils.clipLimit(num,this.listSrcQt);
+		let rightNum=utils.clipLimit(num+1,this.listSrcQt);
+		let right2Num=utils.clipLimit(num+2,this.listSrcQt);
+		let nums=[left2Num,leftNum,currentNum,rightNum,right2Num];
+		console.log(nums)
+		for(let n=0;n<nums.length;n++){
+			let target=$(".inner_clip",this.listSrc).eq(nums[n]).clone();
+			//console.log(this.moveBlockLists[n]);
+			this.moveBlockLists[n].append(target);
+		}
+	}
+	
+	moveCurrent(nextNum){
+		
+	}
+};
+
