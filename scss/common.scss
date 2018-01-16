@@ -79,6 +79,21 @@ body {
 	-ms-text-size-adjust: 100%;
 	text-rendering: optimizeLegibility;
 }
+
+.clearfix{
+	zoom: 1;
+}
+
+.clearfix:after{
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+	font-size:0;
+}
+
+
 @media screen and (max-width: 736px) {
 	body {
 		-webkit-font-smoothing: antialiased;

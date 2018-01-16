@@ -9,6 +9,8 @@ h1{
 .holizon_scroll{
 	
 	width:100%;
+	border:solid gray 1px;
+	zoom: 1;
 	
 	ul{
 		display:none;
@@ -17,11 +19,33 @@ h1{
 
 	.holizon_scroll_move{
 		position:relative;
+		width: 250vw;
+	}
+	.holizon_scroll_move:after{
+		content: ".";
+		display: block;
+		height: 0;
+		clear: both;
+		visibility: hidden;
+		font-size:0;
 	}
 	
+	$padding:2vw;
 	.holizon_scroll_move>div{
 		float:left;
+		width:50vw;
+		padding: $padding;
+		
+		.inner_clip{
+			overflow: hidden;
+			
+			.inner{
+				margin-left: -$padding;
+				margin-top:-$padding;
+			}
+		}
 	}
+	
 
 }
 
