@@ -1,71 +1,80 @@
 "use strict"
-var MAIN={};
+let MAIN={};
 (function(){
 	$(function(){
 	
 	//utils.setTraceBox();
 	utils.init();
+	let nowTime,lastTime;
+	let keyTime=new Date().getTime();
+	let fsp;
+	let totalTimes=[];
+	let framedisplay;
 	
-	var win, winH, winW, winRetio;
-	var scrollTop, scrollLeft;
+	let updateLimit=30;
+	let renderCount=0;
+	nowTime=new Date().getTime();
+		
+	let win, winH, winW, winRetio;
+	let scrollTop, scrollLeft;
 	
-	var movie = $(".movie_box img");
-	var movieW = 1340;
-	var movieH = 334;
-	var movieRetio = movieW / movieH;
+	let movie = $(".movie_box img");
+	let movieW = 1340;
+	let movieH = 334;
+	let movieRetio = movieW / movieH;
 	
-	var movieBox = $(".movie_box");
-	var movieBoxW = movieBox.width();
-	var movieBoxH = movieBox.height();
-	var movieBoxRetio = movieBoxW / movieBoxH;
+	let movieBox = $(".movie_box");
+	let movieBoxW = movieBox.width();
+	let movieBoxH = movieBox.height();
+	let movieBoxRetio = movieBoxW / movieBoxH;
 	
-	var scrollable = false;
-	var scrollable2 = false;
+	let scrollable = false;
+	let scrollable2 = false;
 	
-	var scNum = 0;
-	var scWait = false;
-	var scTime = 1100;
-	var scTimer;
+	let scNum = 0;
+	let scWait = false;
+	let scTime = 1100;
+	let scTimer;
 	
-	var wrapper = $("#wrapper");
+	let wrapper = $("#wrapper");
 	
-	var videoW = 1920;
-	var videoH = 1080;
-	var videoResio = videoW/videoH;
-	var videoArea = $("#video_area1");
-	var videoArea2 = $("#video_area2");
+	let videoW = 1920;
+	let videoH = 1080;
+	let videoResio = videoW/videoH;
+	let videoArea = $("#video_area1");
+	let videoArea2 = $("#video_area2");
 	
 	win=$(window);
 	
 	win.scrollTop(0);
 	resizeHl();
 	
-	var renderer=new PIXI.CanvasRenderer(videoW,videoH,{antialias:false,transparent:false,resolution:1,backgroundColor:0xf4f6f6});
-	var stage=new PIXI.Container();
-	var canvas=$(renderer.view);
+	let renderer=new PIXI.CanvasRenderer(videoW,videoH,{antialias:false,transparent:false,resolution:1,backgroundColor:0xf4f6f6});
+	let stage=new PIXI.Container();
+	let canvas=$(renderer.view);
 	$(videoArea).prepend(canvas);
 		
-	var renderer2=new PIXI.CanvasRenderer(videoW,videoH,{antialias:false,transparent:false,resolution:1,backgroundColor:0xf4f6f6});
-	var stage2=new PIXI.Container();
-	var canvas2=$(renderer2.view);
+	let renderer2=new PIXI.CanvasRenderer(videoW,videoH,{antialias:false,transparent:false,resolution:1,backgroundColor:0xf4f6f6});
+	let stage2=new PIXI.Container();
+	let canvas2=$(renderer2.view);
 	$(videoArea2).prepend(canvas2);
 	
-	var loader = new PIXI.loaders.Loader();
+	let loader = new PIXI.loaders.Loader();
 	loader.add("v","movie/movie1.mp4").add("v2","movie/movie2.mp4");
 
-	var videoBaseTexture=new PIXI.VideoBaseTexture.fromUrl("movie/movie1.mp4");
-	var texture=new PIXI.Texture(videoBaseTexture)
-	var sprite=new PIXI.Sprite(texture);
-	var videoDurarion;
+	let videoBaseTexture=new PIXI.VideoBaseTexture.fromUrl("movie/movie1.mp4");
+	let texture=new PIXI.Texture(videoBaseTexture)
+	let sprite=new PIXI.Sprite(texture);
+	let videoDurarion;
 	stage.addChild(sprite);
 		
-	var videoBaseTexture2=new PIXI.VideoBaseTexture.fromUrl("movie/movie2.mp4");
-	var texture2=new PIXI.Texture(videoBaseTexture2)
-	var sprite2=new PIXI.Sprite(texture2);
-	var videoDurarion2;
+	let videoBaseTexture2=new PIXI.VideoBaseTexture.fromUrl("movie/movie2.mp4");
+	let texture2=new PIXI.Texture(videoBaseTexture2)
+	let sprite2=new PIXI.Sprite(texture2);
+	let videoDurarion2;
 	stage2.addChild(sprite2);
 
-	var loadEnd;
+	let loadEnd;
 
 	loader.load(function(loader,resources){
 		//videoBaseTexture.source.loop=true;
@@ -93,7 +102,7 @@ var MAIN={};
 		
 	});
 
-	var videoElement=loader.resources["v"].data;
+	let videoElement=loader.resources["v"].data;
 	videoElement.addEventListener("loadedmetadata",function(){
 		/*videoElement.loop=true;
 		videoElement.autoplay = true;
@@ -104,7 +113,7 @@ var MAIN={};
 
 		//showKv();
 	});
-	var videoElement2=loader.resources["v2"].data;
+	let videoElement2=loader.resources["v2"].data;
 	videoElement2.addEventListener("loadedmetadata",function(){
 		/*videoElement.loop=true;
 		videoElement.autoplay = true;
@@ -151,7 +160,7 @@ var MAIN={};
 			
 			scWait = true;
 			
-			var delta = e.originalEvent.deltaY ? -(e.originalEvent.deltaY) : e.originalEvent.wheelDelta ? e.originalEvent.wheelDelta : -(e.originalEvent.detail);
+			let delta = e.originalEvent.deltaY ? -(e.originalEvent.deltaY) : e.originalEvent.wheelDelta ? e.originalEvent.wheelDelta : -(e.originalEvent.detail);
 			if (delta < 0){
 				// マウスホイールを下にスクロールしたときの処理を記載
 				scNum+=1;
@@ -209,7 +218,7 @@ var MAIN={};
 		
 		
 		if ( movieBoxRetio > movieRetio ) {
-			var movieTop = ( movieBoxH - movieBoxW / movieRetio ) * 0.5;
+			let movieTop = ( movieBoxH - movieBoxW / movieRetio ) * 0.5;
 			movie.css({
 				"width":movieBoxW+"px",
 				"height":"auto",
@@ -217,8 +226,8 @@ var MAIN={};
 				"margin-left":"0px"
 			});
 		} else {
-			var movieWidth = movieBoxH * movieRetio;
-			var movieLeft = ( movieBoxW - movieWidth ) * 0.5;
+			let movieWidth = movieBoxH * movieRetio;
+			let movieLeft = ( movieBoxW - movieWidth ) * 0.5;
 			movie.css({
 				"width":movieWidth+"px",
 				"height":movieBoxH+"px",
@@ -254,14 +263,8 @@ var MAIN={};
 	//
 	////////////////////////////
 
-	var nowTime,lastTime
-	var fsp;
-	var totalTimes=[];
-	var framedisplay;
-	var keyTime=new Date().getTime();
-	var updateLimit=30;
-	var renderCount=0;
-	nowTime=new Date().getTime();
+	
+	
 	$(function(){
 		//フレームレート計測
 		//setFsp();
@@ -291,7 +294,7 @@ var MAIN={};
 		if(renderCount%10==0){
 			nowTime=new Date().getTime();
 
-			var fpsNum=Math.floor(100000/(nowTime-lastTime))/10;
+			let fpsNum=Math.floor(100000/(nowTime-lastTime))/10;
 			lastTime=nowTime;
 		}
 		framedisplay.text(fpsNum)
